@@ -1,0 +1,16 @@
+# FinWiseIQ - Python dependencies
+# Requires Python 3.11 or newer (pandas 3.x requires Python >= 3.11).
+#
+# Minimum versions are the latest releases on PyPI as of 12 November 2026.
+# Upper bounds block untested major versions. Once the application works,
+# pin exact versions (pip freeze) so every member installs the same set.
+
+# --- Application ---------------------------------------------------------
+openai>=3.49.0,<4                 # Official OpenAI Python SDK (LLM generation)
+pandas>=3.1.1,<4                  # Load the Q&A CSV dataset
+sentence-transformers>=6.3.0,<7   # all-MiniLM-L6-v2 embeddings + cosine similarity
+gradio>=6.31.0,<7                 # Chat interface
+python-dotenv>=1.2.4,<2           # Read OPENAI_API_KEY / OPENAI_MODEL from .env
+
+# --- Development ---------------------------------------------------------
+pytest>=9.2.0,<10                 # Automated tests

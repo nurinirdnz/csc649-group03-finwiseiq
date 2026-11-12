@@ -1,0 +1,247 @@
+# =====================================================================
+# FinWiseIQ - .gitignore
+# CSC649 Group 03 - csc649-group03-finwiseiq
+#
+# Purpose: keep secrets, local artefacts and ALL PDF files out of Git,
+# while keeping source code, tests, the knowledge dataset and public
+# Markdown documentation trackable.
+#
+# NOTE: .gitignore only stops UNTRACKED files from being added. It does
+# not remove files that are already tracked, and it does not protect a
+# secret that has already been committed. See README.md, Section 10.
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+# A. Environment variables and secrets
+# ---------------------------------------------------------------------
+.env
+.env.*
+*.env
+# The template with placeholder values only MUST stay committed.
+!.env.example
+
+# Python dotenv / config files that commonly hold real values
+.envrc
+secrets.json
+secrets.yaml
+secrets.yml
+secrets.toml
+.secrets/
+secrets/
+
+
+# ---------------------------------------------------------------------
+# B. API keys, tokens and credentials
+#    (Gemini / Google, OpenAI, Hugging Face, GitHub, databases, SSH)
+# ---------------------------------------------------------------------
+# Files that hold a key or token directly
+# (limited to data/text extensions so that code such as
+#  tests/test_api_key.py is NOT ignored)
+*api_key*.txt
+*api_key*.json
+*apikey*.txt
+*apikey*.json
+*api-key*.txt
+*api-key*.json
+*.token
+token.json
+tokens.json
+*_token.txt
+*-token.txt
+hf_token*
+.huggingface/
+.netrc
+.pypirc
+
+# Google / service-account / OAuth credential files
+credentials.json
+*credentials*.json
+client_secret*.json
+service-account*.json
+service_account*.json
+*-sa-key*.json
+application_default_credentials.json
+gcloud/
+
+# Private keys and private certificate bundles
+# (public *.crt files are deliberately NOT ignored)
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+*.ppk
+
+# Database passwords / local auth files
+.pgpass
+*.htpasswd
+auth.json
+
+
+# ---------------------------------------------------------------------
+# C. PDF and confidential documents
+# ---------------------------------------------------------------------
+# ALL PDFs are excluded by team decision, including generated project
+# PDFs such as docs/FinWiseIQ_Project_Proposal_and_RAG_Planning.pdf.
+# Share PDFs through another channel (e.g. Google Drive / Teams).
+*.pdf
+*.PDF
+*.Pdf
+
+# Local third-party reference documents (BNM, FATF, IFSB, ...)
+reference-docs/
+reference docs/
+
+# Private / internal documents: keep them in one of these folders or
+# put "private" or "confidential" in the file name.
+private/
+confidential/
+internal/
+local/
+*_private.*
+*-private.*
+*_confidential.*
+*-confidential.*
+*CONFIDENTIAL*
+
+# Office lock and temporary files
+~$*
+*.tmp
+*.~lock.*#
+
+# Local document exports
+exports/
+
+
+# ---------------------------------------------------------------------
+# D. Python generated files and virtual environments
+# ---------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.ipynb_checkpoints/
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+env/
+ENV/
+
+
+# ---------------------------------------------------------------------
+# E. Machine learning / model artefacts
+#    (all-MiniLM-L6-v2 is downloaded at runtime; never commit weights)
+# ---------------------------------------------------------------------
+*.pt
+*.pth
+*.safetensors
+*.onnx
+*.bin
+*.ckpt
+*.h5
+models/
+checkpoints/
+.cache/
+hf_cache/
+sentence_transformers_cache/
+
+# Cached embeddings / generated indexes
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.faiss
+*.index
+embeddings_cache/
+cache/
+
+
+# ---------------------------------------------------------------------
+# F. Local data and databases
+#    data/finwiseiq_dataset.csv and data/sources.csv MUST stay tracked,
+#    so *.csv is deliberately NOT ignored.
+# ---------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.dump
+*.bak
+*.backup
+data/tmp/
+data/local/
+data/private/
+uploads/
+
+# Gradio flagging / cached examples can store real user inputs
+flagged/
+.gradio/
+gradio_cached_examples/
+
+# Explicitly keep the project knowledge base and source registry
+!data/finwiseiq_dataset.csv
+!data/sources.csv
+
+
+# ---------------------------------------------------------------------
+# G. Logs and debugging files
+# ---------------------------------------------------------------------
+*.log
+logs/
+*.trace
+*.dmp
+debug/
+*.stackdump
+nohup.out
+
+
+# ---------------------------------------------------------------------
+# H. IDE and operating system files
+# ---------------------------------------------------------------------
+# VS Code
+.vscode/
+*.code-workspace
+# JetBrains
+.idea/
+*.iml
+# Vim / Emacs / generic editor temp files
+*.swp
+*.swo
+*~
+\#*\#
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+# Linux
+.directory
+.Trash-*
+
+
+# ---------------------------------------------------------------------
+# I. Node.js / frontend tooling
+#    Not used: the frontend is Gradio (Python). Add rules here only if
+#    Node tooling is introduced later.
+# ---------------------------------------------------------------------
