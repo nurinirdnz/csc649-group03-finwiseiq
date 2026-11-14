@@ -1,4 +1,3 @@
-
 import gradio as gr
 
 
@@ -13,6 +12,17 @@ def respond(message, history):
 demo = gr.ChatInterface(
     fn=respond,
     title="FinWiseIQ",
+    examples=[
+        "What is Murabahah financing?",
+        "What is Islamic banking?",
+        "What is Shariah-compliant financing?",
+        "What is the difference between zakat and tax?"
+    ],
+    textbox=gr.Textbox(
+        placeholder="Ask a question about Islamic finance or Malaysian financial compliance...",
+        lines=1,
+        max_lines=3,
+    ),
     description=(
         "An AI-powered Islamic Finance and Malaysian Financial "
         "Compliance Assistant.\n\n"
