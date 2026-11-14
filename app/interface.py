@@ -1,16 +1,32 @@
 import gradio as gr
 
 
+def mock_backend(message):
+    """Return a temporary response until the RAG backend is ready."""
+    return "This is a demo response. The FinWiseIQ backend will be connected soon."
+
+
 def respond(message, history):
-    """Return a temporary response while the backend is being developed."""
-    if not message.strip():
+    """Handle user questions and backend errors safely."""
+
+    if not isinstance(message, str) or not message.strip():
         return "Please type a question."
 
-    return "This is a demo response. The FinWiseIQ backend will be connected soon."
+    try:
+        reply = mock_backend(message.strip())
+
+        if not isinstance(reply, str) or not reply.strip():
+            return "Sorry, I couldn't get an answer right now. Please try again."
+
+        return reply
+
+    except Exception:
+        return "Sorry, something went wrong. Please try again later."
 
 
 demo = gr.ChatInterface(
     fn=respond,
+    show_progress="full",
     title="FinWiseIQ",
     examples=[
         "What is Murabahah financing?",
