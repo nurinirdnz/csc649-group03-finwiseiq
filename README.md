@@ -447,6 +447,7 @@ csc649-group03-finwiseiq/
 │   ├── generation_evaluation.md   # OpenAI answer quality evaluation (KAN-37)
 │   ├── generation_evaluation_answers.md # Raw generation answers (KAN-37)
 │   ├── security_review.md         # Security and repository review (KAN-42)
+│   ├── chatbot_test_cases.md      # Week 9 chatbot test cases and failed cases (KAN-43)
 │   ├── KAN-39_Gradio_Usability_Test_Report.md # Usability testing U01-U12 (KAN-39)
 │   └── screenshots/               # Usability test screenshots (KAN-39)
 ├── src/
@@ -567,6 +568,8 @@ The later frontend polish improved contrast, mobile spacing, and keyboard focus.
 The two partial answers were T13 and T14. In both, the missing detail (the 2019 Federal Court ruling, added to REG-004 in KAN-38, and Malaysia's FATF membership) is in the retrieved row, but the model gave a short answer to a short question and left it out. Nothing was invented.
 
 **Generation-only evaluation** (24 November 2026, KAN-37, [docs/generation_evaluation.md](docs/generation_evaluation.md), reproduce with `python -m tests.evaluate_generation`): `generate_answer()` was tested on its own, with the expected rows supplied directly and, for T16–T20, the threshold bypassed. Correctness 13 / 15 (2 partial, T13 and T14), faithfulness 20 / 20, refusal 5 / 5 (the system prompt refused every out-of-scope question even when OpenAI was called), usefulness 20 / 20.
+
+**Chatbot test cases** (KAN-43, [docs/chatbot_test_cases.md](docs/chatbot_test_cases.md)): the Week 9 test plan covering intent recognition, response relevance, context retention, sentiment handling, task completion and user experience, with a summary table and the failed cases found. Some results are still being filled in; see the file for the current status.
 
 ---
 
