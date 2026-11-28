@@ -33,6 +33,7 @@ CSC649 – Special Topics in Computer Science · Group 03
 15. [Future Improvements](#15-future-improvements)
 16. [Team Members](#16-team-members)
 17. [References](#17-references)
+18. [Appendix A: Task Tracking (Jira)](#appendix-a-task-tracking-jira)
 
 ---
 
@@ -450,6 +451,7 @@ csc649-group03-finwiseiq/
 │   ├── chatbot_test_cases.md      # Week 9 chatbot test cases and failed cases (KAN-43)
 │   ├── KAN-39_Gradio_Usability_Test_Report.md # Usability testing U01-U12 (KAN-39)
 │   └── screenshots/               # Usability test screenshots (KAN-39)
+│       └── chatbot_test_evidence/ # Chatbot test screenshots, named by test ID (KAN-43)
 ├── src/
 │   ├── __init__.py
 │   ├── retrieval.py               # Dataset loading, embeddings, top-3 cosine search, threshold
@@ -569,7 +571,7 @@ The two partial answers were T13 and T14. In both, the missing detail (the 2019 
 
 **Generation-only evaluation** (24 November 2026, KAN-37, [docs/generation_evaluation.md](docs/generation_evaluation.md), reproduce with `python -m tests.evaluate_generation`): `generate_answer()` was tested on its own, with the expected rows supplied directly and, for T16–T20, the threshold bypassed. Correctness 13 / 15 (2 partial, T13 and T14), faithfulness 20 / 20, refusal 5 / 5 (the system prompt refused every out-of-scope question even when OpenAI was called), usefulness 20 / 20.
 
-**Chatbot test cases** (KAN-43, [docs/chatbot_test_cases.md](docs/chatbot_test_cases.md)): the Week 9 test plan covering intent recognition, response relevance, context retention, sentiment handling, task completion and user experience, with a summary table and the failed cases found. Some results are still being filled in; see the file for the current status.
+**Chatbot test cases** (KAN-43, [docs/chatbot_test_cases.md](docs/chatbot_test_cases.md)): the Week 9 test plan covering intent recognition, response relevance, context retention, sentiment handling, task completion and user experience, with a summary table and the failed cases found. 25 of 32 cases passed (78.1%): intent accuracy 85.7%, context retention 12 / 12, sentiment handling 10 / 12 and task completion 60.0%. Four failure patterns are explained with possible fixes (one already fixed in KAN-47). The UX peer-review ratings are still being collected.
 
 ---
 
@@ -582,7 +584,7 @@ All four members contribute to this repository using their own GitHub accounts. 
 | Individual accounts             | Every member commits from their own GitHub account.                                                                                                                  |
 | At least 10 meaningful commits  | Each commit makes one reviewable change, with a message that names the Jira task (e.g. `KAN-34: ...`) and describes what changed.                                    |
 | Commits spread over time        | Commits on `main` span several days from 12 November 2026 onwards.                                                                                                   |
-| Tasks tracked                   | Each task is a Jira issue in project **KAN**, grouped into five phase epics, with an assignee and a due date, moved across _To Do → In Progress → In Review → Done_. |
+| Tasks tracked                   | Each task is a Jira issue in project **KAN**, grouped into five phase epics, with an assignee and a due date, moved across _To Do → In Progress → In Review → Done_. Jira was used in place of GitHub Issues; the full task list is in [Appendix A](#appendix-a-task-tracking-jira). |
 | Separate branches               | Work is done on feature branches (e.g. `feature/rag-retrieval`, `feature/openai-integration`, `feature/knowledge-dataset`), never directly on `main`.                |
 | Reviewed pull requests          | Branch protection on `main` requires at least one approving review and a passing `tests` check before merging.                                                       |
 | No force-pushing to `main`      | Protected by branch protection.                                                                                                                                      |
@@ -699,6 +701,91 @@ BNM policy documents are copyrighted by BNM. The dataset only paraphrases short 
 - OpenAI API documentation: <https://developers.openai.com/api/docs/quickstart>
 - OpenAI model list (check model IDs here): <https://developers.openai.com/api/docs/models>
 - OpenAI Python SDK: <https://pypi.org/project/openai/>
+
+---
+
+## Appendix A: Task Tracking (Jira)
+
+The team tracked all work in Jira (project **KAN**, *FinWiseIQ — CSC649 Group 03*) instead of GitHub Issues. Each task has an assignee and a due date and is grouped under one of five phase epics. Commit messages and pull requests name the Jira key (for example `KAN-34: ...`), so each task can be traced to its code changes.
+
+**Summary (28 November 2026):** 5 epics and 40 tasks. 4 epics and 39 tasks are Done. KAN-43 (submission preparation) and its epic KAN-9 stay open until the project is submitted. One empty placeholder sub-task (KAN-3) is not listed.
+
+### Phase 1: Foundation and Project Setup (KAN-5, Done)
+
+| Key | Task | Assignee | Due | Status |
+|---|---|---|---|---|
+| KAN-4 | Finalise RAG architecture and project structure | Nurin Irdina | 12 Nov | Done |
+| KAN-10 | Finalise CSV dataset schema | Nurin Irdina | 12 Nov | Done |
+| KAN-11 | Agree on backend function contracts | Nurin Irdina | 12 Nov | Done |
+| KAN-12 | Agree on frontend integration requirements | Nurin Irdina | 12 Nov | Done |
+| KAN-13 | GitHub repository and collaboration setup | Nurin Irdina | 12 Nov | Done |
+| KAN-14 | Team kickoff and OpenAI API arrangement | Unassigned (team task) | 12 Nov | Done |
+
+### Phase 2: Parallel Development (KAN-6, Done)
+
+| Key | Task | Assignee | Due | Status |
+|---|---|---|---|---|
+| KAN-15 | Implement CSV dataset loading and preprocessing | Nurin Irdina | 13 Nov | Done |
+| KAN-16 | Implement Sentence Transformer embeddings | Nurin Irdina | 14 Nov | Done |
+| KAN-17 | Implement semantic similarity retrieval | Nurin Irdina | 15 Nov | Done |
+| KAN-18 | Implement relevance threshold and retrieval fallback | Nurin Irdina | 16 Nov | Done |
+| KAN-19 | Test RAG retrieval independently | Nurin Irdina | 17 Nov | Done |
+| KAN-20 | Configure OpenAI API and environment | Nurisha Adilla | 13 Nov | Done |
+| KAN-21 | Develop custom system prompt | Nurisha Adilla | 14 Nov | Done |
+| KAN-22 | Implement context-based OpenAI answer generation | Nurisha Adilla | 15 Nov | Done |
+| KAN-23 | Implement API error handling and response validation | Nurisha Adilla | 16 Nov | Done |
+| KAN-24 | Test OpenAI generation independently | Nurisha Adilla | 17 Nov | Done |
+| KAN-25 | Establish authoritative financial sources | Syafiqah Wahidah | 13 Nov | Done |
+| KAN-26 | Develop Islamic finance Q&A dataset | Syafiqah Wahidah | 14 Nov | Done |
+| KAN-27 | Develop AML/CFT and KYC/CDD Q&A dataset | Syafiqah Wahidah | 15 Nov | Done |
+| KAN-28 | Develop Malaysian regulatory framework Q&A dataset | Syafiqah Wahidah | 16 Nov | Done |
+| KAN-29 | Validate and finalise knowledge dataset | Syafiqah Wahidah | 17 Nov | Done |
+| KAN-30 | Set up Gradio application | Siti Nasyitah | 13 Nov | Done |
+| KAN-31 | Implement chat input and response display | Siti Nasyitah | 14 Nov | Done |
+| KAN-32 | Implement loading and error states | Siti Nasyitah | 15 Nov | Done |
+| KAN-33 | Test frontend using mock responses | Siti Nasyitah | 17 Nov | Done |
+
+### Phase 3: Integration (KAN-7, Done)
+
+| Key | Task | Assignee | Due | Status |
+|---|---|---|---|---|
+| KAN-34 | Integrate RAG retrieval with OpenAI generation | Nurin Irdina | 18 Nov | Done |
+| KAN-35 | Integrate Gradio with the backend | Nurin Irdina | 19 Nov | Done |
+
+### Phase 4: Testing and Evaluation (KAN-8, Done)
+
+| Key | Task | Assignee | Due | Status |
+|---|---|---|---|---|
+| KAN-36 | Evaluate RAG retrieval quality | Nurin Irdina | 20 Nov | Done |
+| KAN-37 | Evaluate OpenAI answer quality | Nurisha Adilla | 20 Nov | Done |
+| KAN-38 | Test dataset accuracy and source traceability | Syafiqah Wahidah | 20 Nov | Done |
+| KAN-39 | Test Gradio usability | Siti Nasyitah | 20 Nov | Done |
+| KAN-40 | Run full end-to-end testing | Nurin Irdina | 21 Nov | Done |
+
+### Phase 5: Finalisation (KAN-9, open until submission)
+
+| Key | Task | Assignee | Due | Status |
+|---|---|---|---|---|
+| KAN-41 | Finalise README and technical documentation | Nurin Irdina | 22 Nov | Done |
+| KAN-42 | Final security and repository review | Nurin Irdina | 22 Nov | Done |
+| KAN-43 | Final project review and submission preparation (includes the Week 9 chatbot test cases) | Nurin Irdina | 29 Nov | In Progress |
+| KAN-44 | Remove old plain Gradio interface | Nurin Irdina | 25 Nov | Done |
+| KAN-45 | UI polish: greeting, loading message, contrast and mobile spacing | Siti Nasyitah | 27 Nov | Done |
+| KAN-46 | System prompt improvements: reply language, wording and key facts | Nurisha Adilla | 27 Nov | Done |
+| KAN-47 | Add conversation memory for follow-up questions in the pipeline | Nurin Irdina | 26 Nov | Done |
+| KAN-48 | Add unit test for the Malay out-of-scope message (KAN-47 follow-up) | Nurisha Adilla | 28 Nov | Done |
+
+### Tasks per member
+
+| Member | Tasks assigned |
+|---|---|
+| Nurin Irdina | 19 |
+| Nurisha Adilla | 8 |
+| Syafiqah Wahidah | 6 |
+| Siti Nasyitah | 6 |
+| Unassigned (team task) | 1 (KAN-14) |
+
+The task count shows planned ownership, not effort: the commit history and pull requests on GitHub show each member's actual contributions.
 
 ---
 

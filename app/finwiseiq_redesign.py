@@ -120,6 +120,7 @@ def build_app(responder: Callable | None = None) -> gr.Blocks:
 
     with gr.Blocks(
         title="FinWiseIQ | Islamic Finance & Compliance",
+        fill_width=True,
     ) as demo:
         gr.HTML(
             f'''<header class="fw-nav" aria-label="FinWiseIQ brand header">
